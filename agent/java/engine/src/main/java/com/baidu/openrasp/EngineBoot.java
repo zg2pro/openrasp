@@ -32,7 +32,6 @@ import com.baidu.openrasp.v8.Loader;
 import java.io.File;
 import java.lang.instrument.Instrumentation;
 import java.lang.instrument.UnmodifiableClassException;
-import java.util.function.BiConsumer;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
@@ -77,17 +76,6 @@ public class EngineBoot implements Module {
             CrashReporter.install(Config.getConfig().getCloudAddress() + "/v1/agent/crash/report",
                     Config.getConfig().getCloudAppId(), Config.getConfig().getCloudAppSecret(),
                     CloudCacheModel.getInstance().getRaspId());
-        }
-        System.out.println("++++++++++++ baseDir:"+Config.getConfig().getBaseDirectory());
-        System.out.println("++++++++++++ response headers:"+Config.getConfig().getResponseHeaders());
-        if (Config.getConfig().getResponseHeaders() != null){
-        System.out.println("++++++++++++ response headers map:");
-            Config.getConfig().getResponseHeaders().forEach(new BiConsumer(){
-            @Override
-            public void accept(Object t, Object u) {
-                System.out.println(t + "=>"+u);
-            }
-        });
         }
         deleteTmpDir();
         String message = "[OpenRASP] Engine Initialized [" + Agent.projectVersion + " (build: GitCommit="

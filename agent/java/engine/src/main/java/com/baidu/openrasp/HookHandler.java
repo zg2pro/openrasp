@@ -188,7 +188,7 @@ public class HookHandler {
             enableBodyXssHook();
             HttpServletRequest requestContainer = new HttpServletRequest(request);
             HttpServletResponse responseContainer = new HttpServletResponse(response);
-            System.out.println("zzzzzzzzzzzzz supposed to set resp headers here:"+Config.getConfig().getBaseDirectory());
+            
             responseContainer.setHeader(REQUEST_ID_HEADER_KEY, requestContainer.getRequestId());
             //设置响应的用户自定义头部
             setUserDefinedResponseHeader(responseContainer);
