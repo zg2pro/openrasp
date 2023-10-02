@@ -76,6 +76,7 @@ public class FileUtil {
         } catch (UnsupportedEncodingException e) {
             baseDir = new File(jarPath).getParent();
         }
+        System.out.println("########### baseDir:"+baseDir);
         return baseDir;
     }
 
@@ -86,6 +87,6 @@ public class FileUtil {
         while ((len = in.read(buffer)) > 0) {
             out.write(buffer, 0, len);
         }
-    } 
+    }
 
 }

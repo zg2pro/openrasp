@@ -29,14 +29,13 @@ import com.baidu.openrasp.request.DubboRequest;
 import com.baidu.openrasp.request.HttpServletRequest;
 import com.baidu.openrasp.response.HttpServletResponse;
 import com.baidu.openrasp.transformer.CustomClassTransformer;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 /**
  * Created by zhuming01 on 5/16/17.
@@ -189,6 +188,7 @@ public class HookHandler {
             enableBodyXssHook();
             HttpServletRequest requestContainer = new HttpServletRequest(request);
             HttpServletResponse responseContainer = new HttpServletResponse(response);
+            System.out.println("zzzzzzzzzzzzz supposed to set resp headers here:"+Config.getConfig().getBaseDirectory());
             responseContainer.setHeader(REQUEST_ID_HEADER_KEY, requestContainer.getRequestId());
             //设置响应的用户自定义头部
             setUserDefinedResponseHeader(responseContainer);
